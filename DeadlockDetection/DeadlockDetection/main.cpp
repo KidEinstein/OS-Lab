@@ -83,10 +83,6 @@ int main() {
                 }
                 marked[i] = true;
             }
-            for (int j = 0; j < numProcesses; j++) {
-                cout << marked[j] << " ";
-            }
-            cout << endl;
         }
     }
     
