@@ -20,7 +20,7 @@ int num = 0;
 
 void produce() {
     while (true) {
-        if (bufferItems > bufferCapacity) {
+        if (bufferItems >= bufferCapacity) {
             cout << "Buffer full" << endl;
             sleep(1);
             continue;
@@ -57,7 +57,7 @@ int main() {
     
     thread p(produce);
     thread c(consume);
-    
+
     p.join();
     c.join();
 }

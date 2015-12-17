@@ -16,23 +16,10 @@ struct Process {
     int burstTime;
     int waitingTime;
     int turnAroundTime;
-    int remainingTime;
 };
 
-bool processLeft() {
-    for (int i = 0; i < numProcesses; i++) {
-        if (processes[i].remainingTime != 0) {
-            return true;
-        }
-    }
-    return false;
-}
 
 int main() {
-    
-    cout << "Enter time slice of processor";
-    int timeSlice;
-    cin >> timeSlice;
     
     cout << "Enter the number of processes";
     cin >> numProcesses;
@@ -41,26 +28,17 @@ int main() {
     cout << "Enter the burst time for each process:\n";
     for (int i = 0; i < numProcesses; i++) {
         cin >> processes[i].burstTime;
-        processes[i].remainingTime = processes[i].burstTime;
     }
     int totalWaitingTime = 0;
     int totalTurnaroundTime = 0;
+    processes[0].waitingTime = 0;
+    processes[0].turnAroundTime = processes[0].burstTime;
 
-    while (processLeft()) {
-        for (int i = 0; i < numProcesses; i++) {
-            if (processes[i].remainingTime == 0) {
-                continue;
-            }
-            if (processes[i].remainingTime >= timeSlice) {
-                processes[i].remainingTime -= timeSlice;
-            }
-        }
-    }
     for (int i = 1; i < numProcesses; i++) {
         processes[i].waitingTime = processes[i-1].turnAroundTime;
         processes[i].turnAroundTime = processes[i].waitingTime + processes[i].burstTime;
-
     }
+    
     for (int i = 0; i < numProcesses; i++) {
         totalWaitingTime += processes[i].waitingTime;
         totalTurnaroundTime += processes[i].turnAroundTime;

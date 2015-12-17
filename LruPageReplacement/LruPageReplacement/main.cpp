@@ -59,7 +59,7 @@ int main() {
             }
         }
         fulfilledRequests.push_back(requests[i]);
-        if(!searchPages(requests[i])) {
+        if (!searchPages(requests[i])) {
             numPageFaults++;
             int removedPage = fulfilledRequests.front();
             fulfilledRequests.pop_front();
