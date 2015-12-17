@@ -7,8 +7,6 @@
 //
 
 
-}
-
 #include <iostream>
 using namespace std;
 
@@ -59,10 +57,8 @@ int main() {
         int startBlock = j - free + 1;
         int endBlock = j;
         cout << "Start: " << startBlock << "End: " << endBlock << endl;
-        for (int k = 0; k < totalBlocks; k++) {
-            if (k >= startBlock && k <= endBlock) {
-                x[k] = 1;
-            }
+        for (int k = startBlock; k <= endBlock; k++) {
+            x[k] = 1;
         }
     }
     

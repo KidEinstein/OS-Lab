@@ -68,15 +68,8 @@ int main() {
     }
     
     int numPageFaults;
-    for (int i = 0; i < numPages; i++) {
-        pages[i] = requests[i];
-        numPageFaults++;
-        for (int j = 0; j < numPages; j++) {
-            cout << pages[j] << " ";
-        }
-        cout << endl;
-    }
-    for (int i = numPages; i < numRequests; i++) {
+
+    for (int i = 0; i < numRequests; i++) {
         if(!searchPages(requests[i])) {
             numPageFaults++;
             int position = getFurthestPageIndex(i);

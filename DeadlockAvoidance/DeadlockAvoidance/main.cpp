@@ -63,7 +63,6 @@ int main() {
         request[i] = new int[numResources];
     }
     
-    cout << "Enter the request matrix:\n";
     for (int i = 0; i < numProcesses; i++) {
         for (int j = 0; j < numResources; j++) {
             request[i][j] = claim[i][j] - allocation[i][j];
