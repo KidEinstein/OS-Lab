@@ -49,7 +49,6 @@ int main() {
         else {
             cout << x[i];
         }
-        
     }
     
     

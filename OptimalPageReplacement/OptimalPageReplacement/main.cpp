@@ -25,14 +25,6 @@ bool searchPages(int request) {
     return false;
 }
 
-int getIndex(int request) {
-    for (int i = 0; i < numPages; i++) {
-        if (request == pages[i]) {
-            return i;
-        }
-    }
-    return -1;
-}
 
 int getNextUse(int currentPage, int x) {
     for (int i = x; i < numRequests; i++) {

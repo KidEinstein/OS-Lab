@@ -35,12 +35,13 @@ int main() {
     cout << "Enter number of pages in memory: ";
     cin >> numPages;
     pages = new int[numPages];
-    
+    deque<int> fulfilledRequests;
     for (int i = 0; i < numPages; i++) {
         pages[i] = -1;
+        fulfilledRequests.push_back(-1);
     }
     
-    cout << "Enter number of request: ";
+    cout << "Enter number of requests: ";
     int numRequests;
     cin >> numRequests;
     requests = new int[numRequests];
@@ -49,18 +50,9 @@ int main() {
         cin >> requests[i];
     }
     
-    deque<int> fulfilledRequests;
     int numPageFaults;
-    for (int i = 0; i < numPages; i++) {
-        pages[i] = requests[i];
-        fulfilledRequests.push_back(requests[i]);
-        numPageFaults++;
-        for (int j = 0; j < numPages; j++) {
-            cout << pages[j] << " ";
-        }
-        cout << endl;
-    }
-    for (int i = numPages; i < numRequests; i++) {
+
+    for (int i = 0; i < numRequests; i++) {
         for (int j = 0; j < fulfilledRequests.size(); j++) {
             if (fulfilledRequests[j] == requests[i]) {
                 fulfilledRequests.erase(fulfilledRequests.begin() + j);

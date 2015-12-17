@@ -5,7 +5,7 @@
 int main() {
     pid_t pid;
     int x = 13;     //Store variable x with value 13 in stack
-    pid = fork();   //Would hold 0 for the child process and pid of child for parent, negative value of error occurs if fork unsuccessful
+    pid = fork();   //Would hold 0 for the child process and pid of child for parent, negative value if fork unsuccessful
     if (pid < 0) {
         printf("Fork Error\n");
         exit(1);
