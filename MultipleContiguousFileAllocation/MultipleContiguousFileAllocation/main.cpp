@@ -6,6 +6,9 @@
 //  Copyright © 2015 Anirudh Shekhawat. All rights reserved.
 //
 
+
+}
+
 #include <iostream>
 using namespace std;
 
@@ -40,14 +43,26 @@ int main() {
     }
     
     for (int i = 0; i < numFiles; i++) {
-        int numBlocksAlloted = 0;
-        cout << files[i].name << endl;
-        while (numBlocksAlloted < files[i].numBlocksReqd) {
-            if (x[index] == 0) {
-                cout << index << " ";
-                numBlocksAlloted++;
+        int free = 0;
+        int j;
+        for (j = 0; j < totalBlocks; j++) {
+            if (x[j] == 0) {
+                free++;
             }
-            index++;
+            else {
+                free = 0;
+            }
+            if (free == files[i].numBlocksReqd) {
+                break;
+            }
+        }
+        int startBlock = j - free + 1;
+        int endBlock = j;
+        cout << "Start: " << startBlock << "End: " << endBlock << endl;
+        for (int k = 0; k < totalBlocks; k++) {
+            if (k >= startBlock && k <= endBlock) {
+                x[k] = 1;
+            }
         }
     }
     

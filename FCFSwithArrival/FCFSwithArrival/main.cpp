@@ -44,6 +44,7 @@ int main() {
     processes[0].waitingTime = 0;
     processes[0].turnAroundTime = processes[0].burstTime;
     for (int i = 1; i < numProcesses; i++) {
+        // Assuming processor is never idle
         processes[i].waitingTime = processes[i-1].turnAroundTime - processes[i].arrivalTime;
         processes[i].turnAroundTime = processes[i].waitingTime + processes[i].burstTime;
     }

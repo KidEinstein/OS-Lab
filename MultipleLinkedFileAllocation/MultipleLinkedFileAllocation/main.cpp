@@ -38,30 +38,18 @@ int main() {
         cin >> files[i].name >> files[i].size;
         files[i].numBlocksReqd = (files[i].size % blockSize) ? files[i].size / blockSize + 1: files[i].size / blockSize;
     }
-    
+    int index = 0;
     for (int i = 0; i < numFiles; i++) {
-        int free = 0;
-        int j;
-        for (j = 0; j < totalBlocks; j++) {
-            if (x[j] == 0) {
-                free++;
+        int numBlocksAlloted = 0;
+        cout << files[i].name << endl;
+        while (numBlocksAlloted < files[i].numBlocksReqd) {
+            if (x[index] == 0) {
+                cout << index << " ";
+                numBlocksAlloted++;
             }
-            else {
-                free = 0;
-            }
-            if (free == files[i].numBlocksReqd) {
-                break;
-            }
-        }
-        int startBlock = j - free + 1;
-        int endBlock = j;
-        cout << "Start: " << startBlock << "End: " << endBlock << endl;
-        for (int k = 0; k < totalBlocks; k++) {
-            if (k >= startBlock && k <= endBlock) {
-                x[k] = 1;
-            }
+            index++;
         }
     }
-    
-    
 }
+
+    
